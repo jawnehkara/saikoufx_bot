@@ -43,6 +43,48 @@ class SaikouFXBot {
         if (stopButton) stopButton.addEventListener('click', () => this.stop());
     }
 
+    startDailyReset() {
+        console.log("DAILY RESET....")
+    }
+
+    showMessage(message, title) {
+        // Handle your message here
+        console.log({message, title})
+    }
+
+    cleanup() {
+        // Handle your cleanup here
+        console.log("cleanup...")
+    }
+
+    handleWebSocketClose() {
+        // Handle your socket here
+        this.ws.close()
+        console.log("Closing webaocket...")
+    }
+
+    updateStatus(status) {
+        // Handle your update status  here
+        console.log("Status", status)
+    }
+
+    subscribeTicks() {
+        // Handle your subscription ticks here
+        console.log("Subscription task",)
+    }
+
+    async start () {
+        const appId = document.getElementById('appId').value;
+        const serialKey = document.getElementById('serialKey').value;
+        await this.connect(appId, serialKey);
+    }
+
+    stop () {
+        // Handle closing your webSocket here
+        this.ws.close()
+        console.log("CLOSED....")
+    }
+
     async connect(appId, serialKey) {
         try {
             // Remove hardcoded API key, allow open usage
